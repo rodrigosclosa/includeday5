@@ -1,6 +1,7 @@
 package com.ciandt.includeday6.backend.entity;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 /**
  * Created by rodrigogs on 14/08/17.
@@ -8,7 +9,9 @@ import com.googlecode.objectify.annotation.Entity;
 @Entity
 public class Usuarios extends baseEntity {
     private String nome;
+    @Index
     private String email;
+    @Index
     private String senha;
 
     public Usuarios() {

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<datastore-indexes autoGenerate="true">
+
+    <datastore-index kind="Agendamentos" ancestor="false" source="manual">
+        <property name="idUsuario" direction="asc"/>
+        <property name="idEstabelecimento" direction="asc"/>
+        <property name="dataHora" direction="asc"/>
+    </datastore-index>
+
+    <datastore-index kind="Usuarios" ancestor="false" source="manual">
+        <property name="email" direction="asc"/>
+        <property name="senha" direction="asc"/>
+    </datastore-index>
+
+    <datastore-index kind="Estabelecimentos" ancestor="false" source="manual">
+        <property name="nome" direction="asc"/>
+    </datastore-index>
+
+    <datastore-index kind="Avaliacoes" ancestor="false" source="manual">
+        <property name="idAgendamento" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>

@@ -18,7 +18,8 @@ public class Agendamentos extends baseEntity {
     @Index
     private Long idEstabelecimento;
     @Ignore
-    private Estabalecimentos estabalecimento;
+    private Estabelecimentos estabalecimento;
+    @Index
     private Date dataHora;
 
     public Agendamentos() {
@@ -62,11 +63,11 @@ public class Agendamentos extends baseEntity {
         this.usuario = usuario;
     }
 
-    public Estabalecimentos getEstabalecimento() {
+    public Estabelecimentos getEstabalecimento() {
         return estabalecimento;
     }
 
-    public void setEstabalecimento(Estabalecimentos estabalecimento) {
+    public void setEstabalecimento(Estabelecimentos estabalecimento) {
         this.estabalecimento = estabalecimento;
     }
 }

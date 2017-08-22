@@ -1,12 +1,14 @@
 package com.ciandt.includeday6.backend.entity;
 
 import com.googlecode.objectify.annotation.Entity;
+import com.googlecode.objectify.annotation.Index;
 
 /**
  * Created by rodrigogs on 14/08/17.
  */
 @Entity
-public class Estabalecimentos extends baseEntity {
+public class Estabelecimentos extends baseEntity {
+    @Index
     private String nome;
     private String descricao;
     private String urlFoto;
@@ -14,10 +16,10 @@ public class Estabalecimentos extends baseEntity {
     private String estado;
     private String nomeGuiaQualificado;
 
-    public Estabalecimentos() {
+    public Estabelecimentos() {
     }
 
-    public Estabalecimentos(String nome, String descricao, String urlFoto, String cidade, String estado, String nomeGuiaQualificado) {
+    public Estabelecimentos(String nome, String descricao, String urlFoto, String cidade, String estado, String nomeGuiaQualificado) {
         this.nome = nome;
         this.descricao = descricao;
         this.urlFoto = urlFoto;
