@@ -25,7 +25,7 @@ public class LogBO {
     }
 
     public void log(HttpServletRequest request, String endpoint, String metodo) throws UnauthorizedException {
-        String numeroGrupo = request.getHeader("Authorization");
+        String numeroGrupo = request.getHeader("numerogrupo");
 
         if(numeroGrupo == null || numeroGrupo.isEmpty()) {
             throw new UnauthorizedException("Número do grupo não informado no HEADER da chamada.");

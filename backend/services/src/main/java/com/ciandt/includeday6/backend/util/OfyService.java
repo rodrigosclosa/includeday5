@@ -1,7 +1,6 @@
 package com.ciandt.includeday6.backend.util;
 
 import com.ciandt.includeday6.backend.entity.Agendamentos;
-import com.ciandt.includeday6.backend.entity.Avaliacoes;
 import com.ciandt.includeday6.backend.entity.Estabelecimentos;
 import com.ciandt.includeday6.backend.entity.LogChamadas;
 import com.ciandt.includeday6.backend.entity.TiposDeficiencia;
@@ -18,7 +17,6 @@ public class OfyService {
 
     static {
         ObjectifyService.register(Agendamentos.class);
-        ObjectifyService.register(Avaliacoes.class);
         ObjectifyService.register(Estabelecimentos.class);
         ObjectifyService.register(LogChamadas.class);
         ObjectifyService.register(TiposDeficiencia.class);

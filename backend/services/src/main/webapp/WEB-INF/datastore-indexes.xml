@@ -12,12 +12,4 @@
         <property name="senha" direction="asc"/>
     </datastore-index>
 
-    <datastore-index kind="Estabelecimentos" ancestor="false" source="manual">
-        <property name="nome" direction="asc"/>
-    </datastore-index>
-
-    <datastore-index kind="Avaliacoes" ancestor="false" source="manual">
-        <property name="idAgendamento" direction="asc"/>
-    </datastore-index>
-
 </datastore-indexes>

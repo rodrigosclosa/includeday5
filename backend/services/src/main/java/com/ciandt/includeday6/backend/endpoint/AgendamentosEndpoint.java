@@ -10,6 +10,8 @@ import com.google.api.server.spi.config.Named;
 import com.google.api.server.spi.response.ConflictException;
 import com.google.api.server.spi.response.UnauthorizedException;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -34,6 +36,16 @@ public class AgendamentosEndpoint {
     @ApiMethod(name = "create", path = "create", httpMethod = ApiMethod.HttpMethod.POST)
     public void create(HttpServletRequest req, Agendamentos agendamentos) throws UnauthorizedException, ConflictException {
         agendamentosBO.create(req, agendamentos);
+    }
+
+    @ApiMethod(name = "list", path = "", httpMethod = ApiMethod.HttpMethod.GET)
+    public List<Agendamentos> list(HttpServletRequest req, @Named("usuario") Long usuario) throws UnauthorizedException {
+        return agendamentosBO.list(req, usuario);
+    }
+
+    @ApiMethod(name = "avaliacao", path = "avaliacao", httpMethod = ApiMethod.HttpMethod.PUT)
+    public Agendamentos avaliacao(HttpServletRequest req, @Named("idAgendamento") Long idAgendamento, @Named("notaAvaliacao") Integer notaAvaliacao) throws UnauthorizedException, ConflictException {
+        return agendamentosBO.setNotaAvaliacao(req, idAgendamento, notaAvaliacao);
     }
 
 }

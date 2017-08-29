@@ -54,40 +54,37 @@ public class SeedDataBO {
             TokenDao.getInstance().insert(token);
         }
 
-        if(TokenHelper.getInstance().tokenValido(request)) {
+        List<Estabelecimentos> estabelecimentosList = new ArrayList<Estabelecimentos>();
 
-            List<Estabelecimentos> estabelecimentosList = new ArrayList<Estabelecimentos>();
+        estabelecimentosList.add(new Estabelecimentos("Shopping Dom Pedro", "Shopping legal na cidade de Campinas", "https://www2.portalnovidade.com.br/wp-content/uploads/2016/04/dpedro.jpg", "Campinas", "SP", "Paulo de Andrade"));
+        estabelecimentosList.add(new Estabelecimentos("Shopping Iguatemi", "Lindo shopping na cidade de Campinas", "https://i.ytimg.com/vi/JvBtpDwaWLk/maxresdefault.jpg", "Campinas", "SP", "Jose Paulo"));
+        estabelecimentosList.add(new Estabelecimentos("Lagoa do Taquaral", "Parque grande na cidade de Campinas", "https://corroporcorrer.files.wordpress.com/2010/03/dsc01787-caravela2.jpg", "Campinas", "SP", "João Garcia"));
+        estabelecimentosList.add(new Estabelecimentos("Lojas Renner", "Loja de roupas e acessórios", "https://jovemaprendiz2017.pro.br/wp-content/uploads/2016/01/3-5.jpg", "Campinas", "SP", "Manoel Sales"));
+        estabelecimentosList.add(new Estabelecimentos("Museu da Imagem e do Som", "Museu da imagem e som na cidade de Campinas", "http://jornalocal.com.br/site/wp-content/uploads/2014/07/mis-campinas.jpg", "Campinas", "SP", "Daniel Gomes"));
+        estabelecimentosList.add(new Estabelecimentos("Museu de História Natural", "Museu de história natural na cidade de Campinas", "https://upload.wikimedia.org/wikipedia/commons/6/6b/Museu_de_Hist%C3%B3ria_Natural_de_Campinas.JPG", "Campinas", "SP", "Gabriel Santos"));
+        estabelecimentosList.add(new Estabelecimentos("Museu Carlos Gomes", "Museu Carlos Gomes na cidade de Campinas", "https://www.guiadasemana.com.br/contentFiles/system/pictures/2013/6/80815/original/254873-170214579704862-4105890-n.jpg", "Campinas", "SP", "Paula Pedroso"));
+        estabelecimentosList.add(new Estabelecimentos("Shopping Galleria", "Shopping bacana na cidade de Campinas", "http://static.panoramio.com/photos/large/77856815.jpg", "Campinas", "SP", "Cristina Silva"));
+        estabelecimentosList.add(new Estabelecimentos("Bosque dos Jequitibás", "Lindo bosque na cidade de Campinas", "https://imagesapt.apontador-assets.com/fit-in/640x480/943f90c46665430db599cb01a465dbaa/bosque-dos-jequitibas.jpg", "Campinas", "SP", "Mariana Gonçalves"));
+        estabelecimentosList.add(new Estabelecimentos("Livraria Saraiva", "Mega livraria na cidade de Campinas", "https://www.epochtimes.com.br/wp-content/uploads/2014/08/br-saraiva-amazon-aquisicao.jpg", "Campinas", "SP", "Vitória Camilo"));
 
-            estabelecimentosList.add(new Estabelecimentos("Shopping Dom Pedro", "Shopping legal na cidade de Campinas", "https://www2.portalnovidade.com.br/wp-content/uploads/2016/04/dpedro.jpg", "Campinas", "SP", "Paulo de Andrade"));
-            estabelecimentosList.add(new Estabelecimentos("Shopping Iguatemi", "Lindo shopping na cidade de Campinas", "https://i.ytimg.com/vi/JvBtpDwaWLk/maxresdefault.jpg", "Campinas", "SP", "Jose Paulo"));
-            estabelecimentosList.add(new Estabelecimentos("Lagoa do Taquaral", "Parque grande na cidade de Campinas", "https://corroporcorrer.files.wordpress.com/2010/03/dsc01787-caravela2.jpg", "Campinas", "SP", "João Garcia"));
-            estabelecimentosList.add(new Estabelecimentos("Lojas Renner", "Loja de roupas e acessórios", "https://jovemaprendiz2017.pro.br/wp-content/uploads/2016/01/3-5.jpg", "Campinas", "SP", "Manoel Sales"));
-            estabelecimentosList.add(new Estabelecimentos("Museu da Imagem e do Som", "Museu da imagem e som na cidade de Campinas", "http://jornalocal.com.br/site/wp-content/uploads/2014/07/mis-campinas.jpg", "Campinas", "SP", "Daniel Gomes"));
-            estabelecimentosList.add(new Estabelecimentos("Museu de História Natural", "Museu de história natural na cidade de Campinas", "https://upload.wikimedia.org/wikipedia/commons/6/6b/Museu_de_Hist%C3%B3ria_Natural_de_Campinas.JPG", "Campinas", "SP", "Gabriel Santos"));
-            estabelecimentosList.add(new Estabelecimentos("Museu Carlos Gomes", "Museu Carlos Gomes na cidade de Campinas", "https://www.guiadasemana.com.br/contentFiles/system/pictures/2013/6/80815/original/254873-170214579704862-4105890-n.jpg", "Campinas", "SP", "Paula Pedroso"));
-            estabelecimentosList.add(new Estabelecimentos("Shopping Galleria", "Shopping bacana na cidade de Campinas", "http://static.panoramio.com/photos/large/77856815.jpg", "Campinas", "SP", "Cristina Silva"));
-            estabelecimentosList.add(new Estabelecimentos("Bosque dos Jequitibás", "Lindo bosque na cidade de Campinas", "https://imagesapt.apontador-assets.com/fit-in/640x480/943f90c46665430db599cb01a465dbaa/bosque-dos-jequitibas.jpg", "Campinas", "SP", "Mariana Gonçalves"));
-            estabelecimentosList.add(new Estabelecimentos("Livraria Saraiva", "Mega livraria na cidade de Campinas", "https://www.epochtimes.com.br/wp-content/uploads/2014/08/br-saraiva-amazon-aquisicao.jpg", "Campinas", "SP", "Vitória Camilo"));
-
-            for (Estabelecimentos estabelecimento : estabelecimentosList) {
-                if(estabelecimentosDao.getByProperty("nome", estabelecimento.getNome()) != null) {
-                    estabelecimentosDao.insert(estabelecimento);
-                }
+        for (Estabelecimentos estabelecimento : estabelecimentosList) {
+            if(estabelecimentosDao.getByProperty("nome", estabelecimento.getNome()) == null) {
+                estabelecimentosDao.insert(estabelecimento);
             }
-
-            List<TiposDeficiencia> tiposDeficienciaList = new ArrayList<TiposDeficiencia>();
-
-            tiposDeficienciaList.add(new TiposDeficiencia("Visual"));
-            tiposDeficienciaList.add(new TiposDeficiencia("Auditiva"));
-            tiposDeficienciaList.add(new TiposDeficiencia("Motora"));
-            tiposDeficienciaList.add(new TiposDeficiencia("Intelectual"));
-
-            for (TiposDeficiencia tipo : tiposDeficienciaList) {
-                if(tiposDeficienciaDao.getByProperty("descricao", tipo.getDescricao()) != null) {
-                    tiposDeficienciaDao.insert(tipo);
-                }
-            }
-
         }
+
+        List<TiposDeficiencia> tiposDeficienciaList = new ArrayList<TiposDeficiencia>();
+
+        tiposDeficienciaList.add(new TiposDeficiencia("Visual"));
+        tiposDeficienciaList.add(new TiposDeficiencia("Auditiva"));
+        tiposDeficienciaList.add(new TiposDeficiencia("Motora"));
+        tiposDeficienciaList.add(new TiposDeficiencia("Intelectual"));
+
+        for (TiposDeficiencia tipo : tiposDeficienciaList) {
+            if(tiposDeficienciaDao.getByProperty("descricao", tipo.getDescricao()) == null) {
+                tiposDeficienciaDao.insert(tipo);
+            }
+        }
+
     }
 }

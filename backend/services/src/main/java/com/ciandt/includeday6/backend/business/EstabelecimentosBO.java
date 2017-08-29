@@ -3,6 +3,7 @@ package com.ciandt.includeday6.backend.business;
 import com.ciandt.includeday6.backend.dao.EstabelecimentosDao;
 import com.ciandt.includeday6.backend.dao.LogChamadasDao;
 import com.ciandt.includeday6.backend.entity.Estabelecimentos;
+import com.ciandt.includeday6.backend.helper.TokenHelper;
 import com.google.api.server.spi.response.UnauthorizedException;
 
 import java.util.List;
@@ -21,11 +22,11 @@ public class EstabelecimentosBO {
     }
 
     public List<Estabelecimentos> listAll(HttpServletRequest req, String nome) throws UnauthorizedException {
-        List<Estabelecimentos> retorno = null;
-
         LogBO.getInstance().log(req, "Estabelecimentos", "listAll");
 
-        if(nome != null || nome.isEmpty()) {
+        List<Estabelecimentos> retorno = null;
+
+        if (nome != null && !nome.isEmpty()) {
             retorno = estabelecimentosDao.listByStartWith("nome", nome);
         } else {
             retorno = estabelecimentosDao.listAll();

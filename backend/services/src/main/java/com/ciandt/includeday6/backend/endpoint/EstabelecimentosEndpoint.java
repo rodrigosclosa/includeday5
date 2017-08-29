@@ -2,12 +2,16 @@ package com.ciandt.includeday6.backend.endpoint;
 
 import com.ciandt.includeday6.backend.business.EstabelecimentosBO;
 import com.ciandt.includeday6.backend.dao.EstabelecimentosDao;
+import com.ciandt.includeday6.backend.entity.Estabelecimentos;
 import com.google.api.server.spi.config.Api;
 import com.google.api.server.spi.config.ApiMethod;
 import com.google.api.server.spi.config.ApiNamespace;
 import com.google.api.server.spi.config.Named;
 import com.google.api.server.spi.response.UnauthorizedException;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -30,8 +34,8 @@ public class EstabelecimentosEndpoint {
     }
 
     @ApiMethod(name = "list", path = "", httpMethod = ApiMethod.HttpMethod.GET)
-    public void list(HttpServletRequest req, @Named("nome") String nome) throws UnauthorizedException {
-        estabelecimentosBO.listAll(req, nome);
+    public List<Estabelecimentos> list(HttpServletRequest req, @Nullable @Named("nome") String nome) throws UnauthorizedException {
+        return estabelecimentosBO.listAll(req, nome);
     }
 
 }

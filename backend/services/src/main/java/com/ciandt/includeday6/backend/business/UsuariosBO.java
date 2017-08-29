@@ -3,6 +3,7 @@ package com.ciandt.includeday6.backend.business;
 import com.ciandt.includeday6.backend.dao.UsuariosDao;
 import com.ciandt.includeday6.backend.entity.LogChamadas;
 import com.ciandt.includeday6.backend.entity.Usuarios;
+import com.ciandt.includeday6.backend.helper.TokenHelper;
 import com.google.api.server.spi.response.ConflictException;
 import com.google.api.server.spi.response.UnauthorizedException;
 import com.google.appengine.api.datastore.Query;
@@ -24,7 +25,7 @@ public class UsuariosBO {
     public void login(HttpServletRequest req, Usuarios usuario) throws UnauthorizedException, ConflictException {
         LogBO.getInstance().log(req, "Usuarios", "login");
 
-        if(usuario == null){
+        if (usuario == null) {
             throw new ConflictException("Email e senha não informados.");
         }
 
@@ -34,7 +35,7 @@ public class UsuariosBO {
 
         Usuarios usuarios = usuariosDao.getByFilter(filter);
 
-        if(usuarios == null) {
+        if (usuarios == null) {
             throw new UnauthorizedException("Usuário não encontrado.");
         }
     }
@@ -42,13 +43,13 @@ public class UsuariosBO {
     public Usuarios create(HttpServletRequest req, Usuarios usuario) throws ConflictException, UnauthorizedException {
         LogBO.getInstance().log(req, "Usuarios", "create");
 
-        if(usuario == null) {
+        if (usuario == null) {
             throw new ConflictException("Dados do usuário não informados.");
         }
 
         Usuarios user = usuariosDao.getByProperty("email", usuario.getEmail());
 
-        if(user != null) {
+        if (user != null) {
             user.setEmail(usuario.getEmail());
             user.setNome(usuario.getNome());
             user.setSenha(usuario.getSenha());
