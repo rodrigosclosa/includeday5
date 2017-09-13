@@ -31,8 +31,8 @@ public class UsuariosEndpoint {
     }
 
     @ApiMethod(name = "login", path = "login", httpMethod = ApiMethod.HttpMethod.POST)
-    public void login(HttpServletRequest req, Usuarios usuario) throws UnauthorizedException, ConflictException {
-        usuariosBO.login(req, usuario);
+    public Usuarios login(HttpServletRequest req, Usuarios usuario) throws UnauthorizedException, ConflictException {
+        return usuariosBO.login(req, usuario);
     }
 
     @ApiMethod(name = "create", path = "create", httpMethod = ApiMethod.HttpMethod.POST)

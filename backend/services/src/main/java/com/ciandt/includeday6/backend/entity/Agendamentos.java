@@ -22,6 +22,7 @@ public class Agendamentos extends baseEntity {
     @Index
     private Date dataHora;
     private Integer notaAvaliacao;
+    private String descricao;
 
     public Agendamentos() {
     }
@@ -78,5 +79,13 @@ public class Agendamentos extends baseEntity {
 
     public void setNotaAvaliacao(Integer notaAvaliacao) {
         this.notaAvaliacao = notaAvaliacao;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

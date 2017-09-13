@@ -22,8 +22,10 @@ public class UsuariosBO {
         usuariosDao = new UsuariosDao();
     }
 
-    public void login(HttpServletRequest req, Usuarios usuario) throws UnauthorizedException, ConflictException {
+    public Usuarios login(HttpServletRequest req, Usuarios usuario) throws ConflictException, UnauthorizedException {
         LogBO.getInstance().log(req, "Usuarios", "login");
+
+        Usuarios retorno = null;
 
         if (usuario == null) {
             throw new ConflictException("Email e senha não informados.");
@@ -33,11 +35,9 @@ public class UsuariosBO {
         Query.Filter f2 = new Query.FilterPredicate("senha", Query.FilterOperator.EQUAL, usuario.getSenha());
         Query.Filter filter = Query.CompositeFilterOperator.and(f1, f2);
 
-        Usuarios usuarios = usuariosDao.getByFilter(filter);
+        retorno = usuariosDao.getByFilter(filter);
 
-        if (usuarios == null) {
-            throw new UnauthorizedException("Usuário não encontrado.");
-        }
+        return retorno;
     }
 
     public Usuarios create(HttpServletRequest req, Usuarios usuario) throws ConflictException, UnauthorizedException {
