@@ -1,0 +1,28 @@
+<!--
+  Generated template for the AvaliarPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Avaliar </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div class="page-title-padding">
+    <div class="line-title"></div>
+    <h2>Avalie sua experiência</h2>
+    <p>Dê uma nota para o estabelecimento {{agendamento.estabalecimento.nome}}</p>
+  </div>
+
+  <rating [(ngModel)]="nota" readOnly="false" max="5">
+  </rating>
+
+  <button ion-button block outline type="submit" (click)="confirmarAvaliacao()">Avaliar</button>
+</ion-content>

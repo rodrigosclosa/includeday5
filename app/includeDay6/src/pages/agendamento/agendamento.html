@@ -1,0 +1,40 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title>
+			Agendamento
+		</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+	<div class="page-title-padding">
+		<div class="line-title"></div>
+		<h2>{{local.Nome}}</h2>
+		<p>{{local.Descricao}} </p>
+	</div>
+
+	<ion-list>
+
+		<ion-item>
+			<ion-label>Data</ion-label>
+			<ion-datetime required displayFormat="DD MMM YYYY" [(ngModel)]="data" name="Data" monthShortNames="Jan, Fev, Mar, Abr, Mai, Jun, Jul, Ago, Set, Out, Nov, Dez"
+			 cancelText="Cancelar" doneText="Ok" [min]="dataMin" [max]="dataMax"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label>Hora</ion-label>
+			<ion-datetime required displayFormat="h:mm A" pickerFormat="h mm A" cancelText="Cancelar" doneText="Ok" [(ngModel)]="hora"
+			 minuteValues="00, 15, 30, 45" name="Hora"></ion-datetime>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Descrição</ion-label>
+			<ion-textarea required [(ngModel)]="descricao" name="Text"></ion-textarea>
+		</ion-item>
+
+	</ion-list>
+
+	<button ion-button block outline type="submit" (click)="confirmarAgendamento()">Agendar</button>
+
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Histórico de agendamento</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg">
+
+  <ion-card *ngFor="let agendamento of agendamentos">
+
+    <div>
+      <img [src]="agendamento.estabalecimento.urlFoto" />
+    </div>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{agendamento.estabalecimento.nome}}
+      </ion-card-title>
+      <p>
+        Agendado para o dia {{ formatarData(agendamento.dataHora)}}
+      </p>
+
+
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start (click)="avaliar(agendamento)">
+            <ion-icon name='ios-star-outline'></ion-icon>
+            Avaliar
+          </button>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+</ion-content>

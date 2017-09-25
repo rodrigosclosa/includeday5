@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title>Entrar</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-list>
+
+		<ion-item>
+			<ion-label floating>Email</ion-label>
+			<ion-input type="email" [(ngModel)]="usuario.email" required></ion-input>
+		</ion-item>
+
+		<ion-item>
+			<ion-label floating>Senha</ion-label>
+			<ion-input type="password" [(ngModel)]="usuario.senha" required></ion-input>
+		</ion-item>
+
+	</ion-list>
+
+	<button ion-button outline block (click)="confirmarLogin()">Entrar</button>
+</ion-content>

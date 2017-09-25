@@ -1,0 +1,39 @@
+<ion-header>
+	<ion-navbar color="primary">
+		<ion-title>Locais</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="sair()">
+            <ion-icon name="ios-log-out-outline"></ion-icon>
+          </button>
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg">
+
+	<ion-card *ngFor="let local of locais">
+
+		<div>
+			<img [src]="local.urlFoto" />
+		</div>
+
+		<ion-card-content>
+			<ion-card-title>
+				{{local.nome}}
+			</ion-card-title>
+			<p>
+				{{local.descricao}}
+			</p>
+		</ion-card-content>
+
+		<ion-row no-padding>
+			<ion-col text-right>
+				<button ion-button clear small color="danger" icon-start (click)="agendar(local)">
+          <ion-icon name='ios-bookmark-outline'></ion-icon>
+          Agendar
+        </button>
+			</ion-col>
+		</ion-row>
+
+	</ion-card>
+</ion-content>
