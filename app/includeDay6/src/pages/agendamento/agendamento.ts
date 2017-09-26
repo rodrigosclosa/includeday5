@@ -37,8 +37,7 @@ export class AgendamentoPage {
     this.showLoading();
 
     let dataHora = this.formatarDataHora();
-    let agendamento = { idEstabelecimento: this.local.id, idUsuario: this.usuarioId, dataHora: dataHora }
-    console.log(agendamento);
+
 
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -47,16 +46,14 @@ export class AgendamentoPage {
 
     let url = this.globalVars.apiUrl + "/agendamentos/v1/create";
 
-    this.http.post(url, agendamento, options)
+    this.http.post(url, {}, options)
       .map(res => res.json())
       .subscribe(resposta => {
         this.loading.dismiss();
-        this.presentToast("Agendamento criado com sucesso");
         this.navCtrl.pop();
         this.navCtrl.parent.select(1);
 
       }, err => {
-        this.showError("Não foi possível criar agendamento");
       });
   }
 

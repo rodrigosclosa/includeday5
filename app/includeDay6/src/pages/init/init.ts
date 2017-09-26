@@ -18,7 +18,7 @@ export class InitPage {
   }
 
   public criarUsuario() {
-    this.navCtrl.push(CriarUsuarioPage);
+    
   }
 
 }

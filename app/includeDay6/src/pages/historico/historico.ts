@@ -44,14 +44,6 @@ export class HistoricoPage {
     let options = new RequestOptions({ headers: headers });
 
     let url = this.globalVars.apiUrl + "/agendamentos/v1/agendamentos/" + this.usuarioId;
-    this.http.get(url, options)
-      .map(res => res.json())
-      .subscribe(data => {
-        this.agendamentos = data.items;
-        this.loading.dismiss();
-      }, err => {
-        this.showError("Não foi possível recuperar o histórico");
-      });
   }
 
   private getUsuarioLogado() {

@@ -20,30 +20,6 @@ export class AvaliarPage {
     public http: Http,
     private toastController: ToastController,
     private globalVars: GlobalVars) {
-    this.agendamento = navParams.get("agendamento");
-  }
-
-  public confirmarAvaliacao() {
-    this.showLoading();
-
-    let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    headers.append('numerogrupo', `${this.globalVars.numeroGrupo}`);
-    let options = new RequestOptions({ headers: headers });
-
-    let url = this.globalVars.apiUrl + "/agendamentos/v1/avaliacao?idAgendamento=" + this.agendamento.id + "&notaAvaliacao=" + this.nota;
-
-    this.http.put(url, {}, options)
-      .map(res => res.json())
-      .subscribe(resposta => {
-        this.loading.dismiss();
-        this.presentToast("Avaliação registrada com sucesso");
-        this.navCtrl.pop();
-        this.navCtrl.parent.select(1);
-
-      }, err => {
-        this.showError("Não foi possível registrar avaliação");
-      });
   }
 
   showLoading() {

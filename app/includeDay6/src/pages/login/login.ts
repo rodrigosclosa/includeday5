@@ -26,9 +26,8 @@ export class LoginPage {
   }
 
   public confirmarLogin() {
-    this.showLoading();
 
-    let data = JSON.stringify(this.usuario);
+    let data = JSON.stringify(this);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     headers.append('numerogrupo', `${this.globalVars.numeroGrupo}`);

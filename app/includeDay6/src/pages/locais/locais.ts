@@ -30,7 +30,6 @@ export class LocaisPage {
     private toastController: ToastController,
     private globalVars: GlobalVars,
     private userData: UserData) {
-    this.getLocais();
   }
 
   private getLocais() {
@@ -46,7 +45,7 @@ export class LocaisPage {
     this.http.get(url, options)
       .map(res => res.json())
       .subscribe(data => {
-        this.locais = data.items;
+        
         this.loading.dismiss();
       }, err => {
         this.showError("Não foi possível recuperar a lista de locais");
